@@ -1,3 +1,6 @@
-##This project is all about python and running new commands of pythons 
-#The content are in alu-higher_level_programming 
-shell that runs python scripts 
+# alu-higher_level_programming
+
+This repository contains Python projects for the ALU Higher Level Programming track.
+
+## Projects
+python-hello_world: Introduction to Python - printing, strings, indexing, and string formatting.

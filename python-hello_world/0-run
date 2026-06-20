@@ -1,2 +1,2 @@
-#!/usr/bin/python3
-#This script shows the shell script that runs a python script 
+#!/bin/bash
+python3 "$PYFILE"
