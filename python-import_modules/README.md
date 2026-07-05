@@ -1,16 +1,3 @@
-## alu-higher_level_programming
+# Python - import & modules
 
-This repository contains exercises for the Higher Level Programming
-curriculum, covering Python fundamentals such as modules, imports,
-data structures, exceptions, classes, and more.
-
-## python-import_modules
-
-This directory covers how to import functions, classes, and modules
-in Python, including:
-
-
-Importing a function from a module
-Importing multiple functions from a module
-Using __name__ == "__main__"
-Command line arguments
+Tasks covering importing functions and modules, command line arguments, and module discovery in Python.
