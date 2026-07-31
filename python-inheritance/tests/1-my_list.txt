@@ -1,0 +1,57 @@
+The ``1-my_list`` module
+========================
+
+Using ``MyList``
+----------------
+
+    >>> MyList = __import__('1-my_list').MyList
+
+An empty list prints an empty list when sorted:
+
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
+
+A list keeps its own order but prints sorted:
+
+    >>> my_list = MyList([1, 4, 2, 3, 5])
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+It works with negative numbers:
+
+    >>> my_list = MyList([-3, 1, -10, 7])
+    >>> my_list.print_sorted()
+    [-10, -3, 1, 7]
+
+It works with a single element:
+
+    >>> my_list = MyList([42])
+    >>> my_list.print_sorted()
+    [42]
+
+It works with elements already sorted:
+
+    >>> my_list = MyList([1, 2, 3])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+
+It works with repeated elements:
+
+    >>> my_list = MyList([2, 2, 1])
+    >>> my_list.print_sorted()
+    [1, 2, 2]
+
+MyList is a real list, so list methods still work:
+
+    >>> my_list = MyList()
+    >>> my_list.append(5)
+    >>> my_list.append(1)
+    >>> print(my_list)
+    [5, 1]
+    >>> my_list.print_sorted()
+    [1, 5]
