@@ -59,3 +59,15 @@ None is not an integer:
     >>> bg.integer_validator("nothing", None)
     Traceback (most recent call last):
     TypeError: nothing must be an integer
+
+Calling integer_validator with only a name raises an error:
+
+    >>> bg.integer_validator("age")  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Calling integer_validator with no argument raises an error:
+
+    >>> bg.integer_validator()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
