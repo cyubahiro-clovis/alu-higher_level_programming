@@ -71,3 +71,39 @@ Calling integer_validator with no argument raises an error:
     >>> bg.integer_validator()  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+A tuple is not an integer:
+
+    >>> bg.integer_validator("age", (4,))
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A set is not an integer:
+
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A dictionary is not an integer:
+
+    >>> bg.integer_validator("age", {"a": 1})
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+A complex number is not an integer:
+
+    >>> bg.integer_validator("age", complex(5))
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+An empty tuple is not an integer:
+
+    >>> bg.integer_validator("age", ())
+    Traceback (most recent call last):
+    TypeError: age must be an integer
+
+An empty list is not an integer:
+
+    >>> bg.integer_validator("age", [])
+    Traceback (most recent call last):
+    TypeError: age must be an integer
