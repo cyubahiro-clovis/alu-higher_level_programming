@@ -386,3 +386,32 @@ class TestSquareSaveToFile(unittest.TestCase):
         Square.save_to_file(None)
         with open("Square.json", "r") as f:
             self.assertEqual(f.read(), "[]")
+
+
+class TestSquarePositionalValidation(unittest.TestCase):
+    """Test validation of positional arguments passed to Square."""
+
+    def test_string_y_positional(self):
+        """Test that a string y raises a TypeError."""
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Square(1, 2, "3")
+
+    def test_float_y_positional(self):
+        """Test that a float y raises a TypeError."""
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Square(1, 2, 3.5)
+
+    def test_string_x_positional(self):
+        """Test that a string x raises a TypeError."""
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, "2", 3)
+
+    def test_negative_y_positional(self):
+        """Test that a negative y raises a ValueError."""
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Square(1, 2, -3)
+
+    def test_valid_positional(self):
+        """Test that valid positional arguments are accepted."""
+        s = Square(1, 2, 3, 4)
+        self.assertEqual(str(s), "[Square] (4) 2/3 - 1")
