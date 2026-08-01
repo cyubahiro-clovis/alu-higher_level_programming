@@ -49,3 +49,9 @@ A non string last name raises a TypeError:
     >>> say_my_name("John", None)
     Traceback (most recent call last):
     TypeError: last_name must be a string
+
+Calling the function with no argument raises a TypeError:
+
+    >>> say_my_name()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
