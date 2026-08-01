@@ -78,3 +78,18 @@ Missing arguments raise a TypeError:
     >>> matrix_divided([[1, 2]])
     Traceback (most recent call last):
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+Dividing by infinity gives zero for every element:
+
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], float('inf'))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Dividing by negative infinity gives negative zero:
+
+    >>> matrix_divided([[1, 2], [3, 4]], float('-inf'))
+    [[-0.0, -0.0], [-0.0, -0.0]]
+
+Dividing by a very small float gives large results:
+
+    >>> matrix_divided([[1, 2]], 0.5)
+    [[2.0, 4.0]]
