@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unittests for the Square class."""
 import unittest
+import os
 import io
 import sys
 from models.base import Base
@@ -326,3 +327,62 @@ class TestSquarePositionalValidation(unittest.TestCase):
         """Test that valid positional arguments are accepted."""
         s = Square(1, 2, 3, 4)
         self.assertEqual(str(s), "[Square] (4) 2/3 - 1")
+
+
+class TestSquareSaveToFile(unittest.TestCase):
+    """Test the save_to_file class method on Square."""
+
+    def tearDown(self):
+        """Remove any file created by a test."""
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+
+    def test_none(self):
+        """Test that None writes an empty list to the file."""
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_empty_list(self):
+        """Test that an empty list writes an empty list to the file."""
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_file_is_created_for_none(self):
+        """Test that the file exists after saving None."""
+        Square.save_to_file(None)
+        self.assertTrue(os.path.exists("Square.json"))
+
+    def test_file_is_created_for_empty(self):
+        """Test that the file exists after saving an empty list."""
+        Square.save_to_file([])
+        self.assertTrue(os.path.exists("Square.json"))
+
+    def test_one_square(self):
+        """Test writing a single square to the file."""
+        Square.save_to_file([Square(10, 7, 2, 8)])
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read()) > 2)
+
+    def test_two_squares(self):
+        """Test writing two squares to the file."""
+        Square.save_to_file([Square(5), Square(7, 9, 1)])
+        with open("Square.json", "r") as f:
+            self.assertEqual(len(f.read().split("},")), 2)
+
+    def test_overwrite(self):
+        """Test that an existing file is overwritten."""
+        Square.save_to_file([Square(10, 7, 2, 8)])
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_overwrite_with_none(self):
+        """Test that saving None overwrites an existing file."""
+        Square.save_to_file([Square(10, 7, 2, 8)])
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
