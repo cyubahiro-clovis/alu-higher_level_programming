@@ -1,0 +1,61 @@
+The ``5-text_indentation`` module
+=================================
+
+Using ``text_indentation``
+--------------------------
+
+Import the function:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+It prints two new lines after each of the characters ., ? and :
+
+    >>> text_indentation("Hello. How are you? Fine: thanks")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    Fine:
+    <BLANKLINE>
+    thanks
+
+There is no space at the beginning or the end of a printed line:
+
+    >>> text_indentation("   Hello.   How are you?   ")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+
+A text without any of those characters is printed as it is:
+
+    >>> text_indentation("No special character here")
+    No special character here
+
+An empty string prints nothing:
+
+    >>> text_indentation("")
+
+A text made only of separators:
+
+    >>> text_indentation("...")
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+
+A non string argument raises a TypeError:
+
+    >>> text_indentation(12)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(["Hello"])
+    Traceback (most recent call last):
+    TypeError: text must be a string
