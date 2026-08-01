@@ -54,3 +54,9 @@ A string size raises a TypeError:
     >>> print_square(None)
     Traceback (most recent call last):
     TypeError: size must be an integer
+
+Calling the function with no argument raises a TypeError:
+
+    >>> print_square()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
