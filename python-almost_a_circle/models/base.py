@@ -64,4 +64,3 @@ class Base:
                 return [cls.create(**d) for d in dicts]
         except FileNotFoundError:
             return []
-
